@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Travalista</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'assets/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Travalista</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>
+                <li class="nav-item"><a href="{% url 'bookingcart' %}" class="nav-link">Bookings</a></li>
+<!--                <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>-->
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta"><a href="{% url 'book_now' %}" class="nav-link"><span>Book Now</span></a></li>
+                {% if request.session.username %}
+                <li class="nav-item cta"><span class="nav-link">User : {{request.session.username}}</span></li>
+                {% else %}
+                <li class="nav-item"><a href="{% url 'login_frontend' %}" class="nav-link">Register or Login</a></li>
+                {% endif %}
+                 <li class="nav-item"><a href="{% url 'Userlogout' %}" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static 'assets/images/bookcart.jpg' %}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+             data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
+                        class="mr-2"></span> <span class="mr-2"><a
+                        href="{% url 'home' %}">Home</a></span> <span></span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Booking
+                    Details</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-9">
+                <div class="row">
+
+                    <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+                        <!--                        <span>Your Ticket Details </span>-->
+                        <!--                        <h2>{{data.flightname}}</h2>-->
+                        <!--                        <p class="rate mb-5">-->
+                        <!--                            <span class="loc"><a href="#"><i class="icon-map"></i> 291 South 21th Street, Suite 721 New York NY 10016</a></span>-->
+                        <!--                            <span class="star">-->
+                        <!--    							<i class="icon-star"></i>-->
+                        <!--    							<i class="icon-star"></i>-->
+                        <!--    							<i class="icon-star"></i>-->
+                        <!--    							<i class="icon-star"></i>-->
+                        <!--    							<i class="icon-star-o"></i>-->
+                        <!--    							8 Rating</span>-->
+                        <!--                        </p>-->
+                        <!--                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the-->
+                        <!--                            skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of-->
+                        <!--                            her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she-->
+                        <!--                            continued her way.</p>-->
+                        <!--                        <div class="d-md-flex mt-5 mb-5">-->
+                        <!--                            <ul>-->
+                        <!--                                <li>The Big Oxmox advised her not to do so</li>-->
+                        <!--                                <li>When she reached the first hills of the Italic Mountains</li>-->
+                        <!--                                <li>She had a last view back on the skyline of her hometown</li>-->
+                        <!--                                <li>Bookmarksgrove, the headline of Alphabet</li>-->
+                        <!--                            </ul>-->
+                        <!--                            <ul class="ml-md-5">-->
+                        <!--                                <li>Question ran over her cheek, then she continued</li>-->
+                        <!--                                <li>Pityful a rethoric question ran</li>-->
+                        <!--                                <li>Mountains, she had a last view back on the skyline</li>-->
+                        <!--                                <li>Headline of Alphabet Village and the subline</li>-->
+                        <!--                            </ul>-->
+                        <!--                        </div>-->
+                        <!--                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the-->
+                        <!--                            skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of-->
+                        <!--                            her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she-->
+                        <!--                            continued her way.</p>-->
+                        <h4>Flight Tickets </h4>
+                        {% for i in data %}
+                        <div class="owl-item mb-5" style="width: 150%;">
+                            <div class="item">
+                                <div class="testimony-wrap d-flex">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
+                                        <!--		                    <span class="quote d-flex align-items-center justify-content-center">-->
+                                        <!--		                      <i class="icon-quote-left"></i>-->
+                                        <!--		                    </span>-->
+                                    </div>
+                                    <div class="text ml-md-4">
+                                        <p class="name">Flight Name:{{i.flightname}}</p>
+                                        <p class="mb-2">Flight Number:{{i.flightnumber}}</p>
+                                        <p class="mb-2">Date From :{{i.datefrom}}</p>
+                                        <p class="mb-2">Date To :{{i.dateto}}</p>
+                                        <p class="mb-2">From :{{i.fromplace}}</p>
+                                        <p class="mb-2">To :{{i.toplace}}</p>
+                                        <p class="name">Name:{{i.fullname}}</p>
+                                        <span class="position">Mobile:{{i.mobile}}</span><br>
+                                        <span class="position">Class:{{i.travelclass}}</span><br>
+                                        <span class="position">email:{{i.email}}</span>
+                                        <p class="name">Total Price:{{i.totalticketprice}}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <form action="{% url 'bookingcart_delete' pro_id=i.id %}">
+                                            <button class="btn btn-primary py-3" type="submit"> Cancel</button>
+                                        </form>
+                                    </div>
+                                    <br>
+                                    <!--                                    <p class="name" style="margin-top:150px; margin-left:-100px;">Price:</p>-->
+                                </div>
+                            </div>
+                            <div style="height:25px;">
+                                <h1></h1>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <h4>Hotel Rooms </h4>
+                        {% for i in hoteldata %}
+                        <div class="owl-item mb-5" style="width: 150%;">
+                            <div class="item">
+                                <div class="testimony-wrap d-flex">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
+                                        <!--		                    <span class="quote d-flex align-items-center justify-content-center">-->
+                                        <!--		                      <i class="icon-quote-left"></i>-->
+                                        <!--		                    </span>-->
+                                    </div>
+                                    <div class="text ml-md-4">
+                                        <p class="name"> Name:{{i.hotelcustomername}}</p>
+<!--                                        <p class="mb-2">Flight Number:{{i.username}}</p>-->
+                                        <p class="mb-2">Email :{{i.hotelcustomeremail}}</p>
+                                        <p class="mb-2">Mobile :{{i.hotelcustomermobile}}</p>
+                                        <p class="mb-2">From : {{i.hotelbookingstartdate}}</p>
+                                        <p class="mb-2">To : {{i.hotelbookingenddate}}</p>
+                                        <p class="name">{{i.roomname}}</p>
+                                        <p class="name">Rs : {{i.hotelprice}}</p>
+
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <form action="{% url 'bookinghotel_delete' pro_id=i.id %}">
+                                            <button class="btn btn-primary py-3" type="submit"> Cancel</button>
+                                        </form>
+                                    </div>
+                                    <br>
+                                    <!--                                    <p class="name" style="margin-top:150px; margin-left:-100px;">Price:</p>-->
+                                </div>
+                            </div>
+                            <div style="height:25px;">
+                                <h1></h1>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+
+
+                    </div>
+
+
+                    <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+                        <!--                        <h4 class="mb-5">Check Availability &amp; Booking</h4>-->
+                        <div class="fields">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <!--                                    <div class="form-group">-->
+                                    <!--                                        <input type="submit" value="Check Availability" class="btn btn-primary py-3">-->
+                                    <!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> <!-- .col-md-8 -->
+        </div>
+    </div>
+</section> <!-- .section -->
+
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Hotel Tarvalista</h2>
+                    <p>Hotel Travalista is a 3 star hotel located in Wayanad,<br>Come to our hotel with family and enjoy</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="https://maps.app.goo.gl/8fvtAW5d7o9gedXh7"><span class="icon-map"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Customer Support</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="https://razorpay.com/" class="py-2 d-block">Payment Option</a></li>
+
+                        <li><a href="{% url 'contact_us' %}" class="py-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Hotel Location</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-map-marker"></span><span class="text">Kerala , Wayanad , Near Engineering Collage </span>
+                            </li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span
+                                    class="text">+91 7356718496</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">travalista@gmail.com</span></a>
+                            <li><a href="https://maps.app.goo.gl/8fvtAW5d7o9gedXh7"><span class="icon icon-map"></span><span class="text">Google Map</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/js/aos.js' %}"></script>
+<script src="{% static 'assets/js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'assets/js/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'assets/js/scrollax.min.js' %}"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'assets/js/google-map.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}' , '' , 'warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}' , '' , 'error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}' , '' , 'success')
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}' , '' , 'info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script src="{% static 'assets/js/chatbot.js' %}"></script>
+</body>
+</html>

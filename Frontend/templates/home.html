@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Travalista</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'assets/LOGIN/rating.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'assets/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Travalista</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item "><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'hotelindex' %}" class="nav-link">Hotels</a></li>
+                <li class="nav-item"><a href="{% url 'bookingcart' %}" class="nav-link">Bookings</a></li>
+                <!--                <li class="nav-item"><a href="tour.html" class="nav-link">Tour</a></li>-->
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link">Contact</a></li>
+                <li class="nav-item cta"><a href="{% url 'book_now' %}" class="nav-link"><span>Book Now</span></a></li>
+                {% if request.session.username %}
+                <li class="nav-item cta"><span class="nav-link">User : {{request.session.username}}</span></li>
+                {% else %}
+                <li class="nav-item"><a href="{% url 'login_frontend' %}" class="nav-link">Register or Login</a></li>
+                {% endif %}
+                <li class="nav-item"><a href="{% url 'Userlogout' %}" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static 'assets/images/flight_cover.jpg' %}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+             data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><strong>Explore
+                    <br></strong> your flight with us</h1>
+                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places and explore your
+                    life</p>
+                <div class="block-17 my-9">
+                    <!--              <form action="" method="post" class="d-flex">-->
+                    <!--                <div class="fields d-block d-flex">-->
+                    <!--					 <div class="select-wrap one-third">-->
+                    <!--                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
+                    <!--                    <select name="" id="" class="form-control" placeholder="Keyword search">-->
+                    <!--                      <option value="">From</option>-->
+                    <!--                      <option value="">San Francisco USA</option>-->
+                    <!--                      <option value="">Berlin Germany</option>-->
+                    <!--                      <option value="">Lodon United Kingdom</option>-->
+                    <!--                      <option value="">Paris Italy</option>-->
+                    <!--                    </select>-->
+                    <!--                  </div>-->
+
+
+                    <!--                  <div class="select-wrap one-third">-->
+                    <!--                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
+                    <!--                    <select name="" id="" class="form-control" placeholder="Keyword search">-->
+                    <!--                      <option value="">To</option>-->
+                    <!--                      <option value="">San Francisco USA</option>-->
+                    <!--                      <option value="">Berlin Germany</option>-->
+                    <!--                      <option value="">Lodon United Kingdom</option>-->
+                    <!--                      <option value="">Paris Italy</option>-->
+                    <!--                    </select>-->
+                    <!--                  </div>-->
+                    <!--					 <div class="textfield-search one-third">-->
+                    <!--&lt;!&ndash;						 <label style="text-align:center;">Departure</label>&ndash;&gt;-->
+                    <!--                  	<input type="date" class="form-control" placeholder="Ex: food, service, hotel">-->
+                    <!--                  </div>-->
+                    <!--					 <div class="textfield-search one-third">-->
+                    <!--&lt;!&ndash;						 <label style="text-align:center;">Departure</label>&ndash;&gt;-->
+                    <!--                  	<input type="date" class="form-control" placeholder="Ex: food, service, hotel">-->
+                    <!--                  </div>-->
+
+                    <!--                </div>-->
+                    <!--                  <br><br>-->
+                    <!--                  -->
+
+                    <!--                <input type="submit" class="search-submit btn btn-primary" value="Search">-->
+
+                    <!--              </form>-->
+
+                </div>
+
+
+                <!--            <p>Or browse the highlights</p>-->
+                <!--            <p class="browse d-md-flex">-->
+                <!--            	<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-fork"></i>Restaurant</a></span>-->
+                <!--            	<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-hotel"></i>Hotel</a></span>-->
+                <!--            	<span class="d-flex justify-content-md-center align-items-md-center"><a href="#"><i class="flaticon-meeting-point"></i>Places</a></span>-->
+                <!--            	<span class="d-flex justify-content-md-center align-items-md-	center"><a href="#"><i class="flaticon-shopping-bag"></i>Shopping</a></span>-->
+                <!--            </p>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section services-section bg-light">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon"><span class="flaticon-guarantee"></span></div>
+                    </div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Best Price Guarantee</h3>
+                        <p>We always provide best price to our customers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon"><span class="flaticon-like"></span></div>
+                    </div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Travellers Love Us</h3>
+                        <p>Explore your every journey with us , we provide everything you need</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon"><span class="flaticon-detective"></span></div>
+                    </div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Best Travel Agent</h3>
+                        <p>No ticket deley or any other problems during ticket booking . sit back and relax</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon"><span class="flaticon-support"></span></div>
+                    </div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">Our Dedicated Support</h3>
+                        <p>Our customer support team is always at your service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--  BOOK FLIGHT -->
+
+<section class="ftco-section ftco-destination">
+    <div class="container">
+        <div class="row justify-content-start mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate">
+                <span class="subheading">Book</span>
+                <h2 class="mb-4"><strong>Book</strong> Your Tickets </h2>
+            </div>
+        </div>
+        <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4 fadeInUp ftco-animated">
+
+            <div class="fields">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="select-wrap one-third">
+                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                <select name="fromplace" id="" class="form-control" placeholder="To">
+                                    <option value="">From</option>
+                                    <option value="">San Francisco USA</option>
+                                    <option value="">Berlin Germany</option>
+                                    <option value="">Lodon United Kingdom</option>
+                                    <option value="">Paris Italy</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="select-wrap one-third">
+                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                <select name="toplace" id="" class="form-control" placeholder="To">
+                                    <option value="">To</option>
+                                    <option value="">San Francisco USA</option>
+                                    <option value="">Berlin Germany</option>
+                                    <option value="">Lodon United Kingdom</option>
+                                    <option value="">Paris Italy</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="checkin_date" class="form-control" placeholder="Date from"
+                                   name="datefrom">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="checkin_date" class="form-control" placeholder="Date to"
+                                   name="dateto">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="select-wrap one-third">
+                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                            <select name="travelclass" id="product-select" class="form-control"
+                                    placeholder="To">
+                                <!-- <option value="">Traveller Class</option> -->
+
+                                <option value="1"> Economy Class</option>
+                                <option value="2"> Buiness Class</option>
+                                <option value="3"> First Class</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="number" name="numpassengers" id="quantity2" class="form-control"
+                                   placeholder="Number of passengers" min="1" max="6">
+                            <input type="hidden" id="economyprice" class="form-control"
+                                   placeholder="Number of passengers" name="economyprice"
+                                   value="{{data.economyprice}}">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <button class="btn btn-primary py-3" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--BOOK FLIGHT END-->
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-start mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate">
+                <span class="subheading">Our Special Packages</span>
+                <h2 class="mb-4"><strong>Top</strong> Tour Packages</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            {% for i in tourdata %}
+            <div class="col-sm col-md-6 col-lg ftco-animate">
+                <div class="destination">
+                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+                       style="background-image: url({{i.image.url}});">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <span class="icon-search2"></span>
+                        </div>
+                    </a>
+                    <div class="text p-3">
+                        <div class="d-flex">
+                            <div class="one">
+                                <h3><a href="#">{{i.tourname}}</a></h3>
+                                <p class="rate">
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star-o"></i>
+                                    <span>8 Rating</span>
+                                </p>
+                            </div>
+                            <div class="two">
+                                <span class="price">Rs {{i.tourprice}}</span>
+                            </div>
+                        </div>
+                        <p>{{i.tourdescription}}</p>
+                        <p class="days"><span>duration : {{i.tourduration}}</span></p>
+                        <p class="days" style="display:none;"><span>duration : {{request.session.username}}</span></p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                            <span><i></i>Travelista</span>
+                            <span class="ml-auto"><a id="contactus"
+                                                     href="{% url 'TourSingle' tourid=i.id %}">Contact us</a></span>
+                        </p> <br>
+
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                <h2 class="mb-4">Our Satisfied Customers</h2>
+                <span class="subheading">More than 10,000 Customers</span>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="10000">0</strong>
+                                <span>Happy Customers</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="4000">0</strong>
+                                <span>Destination Places</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="87">0</strong>
+                                <span>Hotels</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="450">0</strong>
+                                <span>Flights</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section testimony-section bg-light">
+    <div class="container">
+        <div class="row justify-content-start">
+            <div class="col-md-5 heading-section ftco-animate">
+                <span class="subheading">Best Travel Website</span>
+                <h2 class="mb-4 pb-3"><strong>Why</strong> Choose Us?</h2>
+                <p>Travelista is a comprehensive travel booking platform that caters to the needs of modern travelers.
+                    It offers a seamless and user-friendly interface that enables users to book flights and hotels with
+                    ease. With a vast selection of options to choose from, Travelista ensures that users have access to
+                    the best deals and accommodations that suit their preferences and budget. The website is designed
+                    with a powerful search engine that provides quick and accurate results, making it easier for users
+                    to plan their trips. Whether it’s a business trip or a vacation, Travelista simplifies the booking
+                    process, making travel planning a hassle-free experience.</p>
+
+                <!--                <p><a href="#" class="btn btn-primary btn-outline-primary mt-4 px-4 py-3">Read more</a></p>-->
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6 heading-section ftco-animate">
+                <span class="subheading">Testimony</span>
+                <h2 class="mb-4 pb-3"><strong>Our</strong> Customers Says</h2>
+
+                <div class="row ftco-animate">
+
+                    <div class="col-md-12">
+
+                        <div class="carousel-testimony owl-carousel">
+                             {% for x in rating %}
+
+                            <div class="item">
+                                <div class="testimony-wrap d-flex">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
+	                    <span class="quote d-flex align-items-center justify-content-center">
+	                      <i class="icon-quote-left"></i>
+	                    </span>
+                                    </div>
+                                    <div class="text ml-md-4">
+                                        <p class="mb-5">{{x.description}}</p>
+                                        <p class="name">
+
+                                            {% if x.rating > 0 %}
+                                            <i class="fa fa-star {% if x.rating  < 1 %} no-checked {% else %} checked {% endif %} "
+                                               id="check-star"></i>
+                                            <i class="fa fa-star {% if x.rating  < 2 %} no-checked {% else %} checked {% endif %} "
+                                               id="check-star"></i>
+                                            <i class="fa fa-star {% if x.rating  < 3 %} no-checked {% else %} checked {% endif %} "
+                                               id="check-star"></i>
+                                            <i class="fa fa-star {% if x.rating  < 4 %} no-checked {% else %} checked {% endif %} "
+                                               id="check-star"></i>
+                                            <i class="fa fa-star {% if x.rating  < 5 %} no-checked {% else %} checked {% endif %} "
+                                               id="check-star"></i>
+                                        <hr>
+                                        {% else %}
+
+                                        <i class="fa fa-star " id="star"></i>
+                                        <i class="fa fa-star" id="star"></i>
+                                        <i class="fa fa-star" id="star"></i>
+                                        <i class="fa fa-star" id="star"></i>
+                                        <i class="fa fa-star" id="star"></i>
+                                        &nbsp;<span>No ratings</span>
+
+                                        <hr>
+
+                                        {% endif %}
+
+
+                                        </p>
+                                        <span class="position"><b>{{x.username}}</b></span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-start mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate">
+                <span class="subheading">Check out this..</span>
+                <h2 class="mb-4"><strong>Our</strong> Travelista Hotel Rooms</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for p in random %}
+            <div class="col-md-6 col-lg-3 ftco-animate">
+                <div class="destination">
+                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+                       style="background-image: url({{p.image.url}});">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <span class="icon-search2"></span>
+                        </div>
+                    </a>
+                    <div class="text p-3">
+                        <h3><a href="#">{{p.roomname}}</a></h3>
+                        <p class="rate">
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star-o"></i>
+                            <span>8 Rating</span>
+                        </p>
+                        <p>Enjoy your weekend and holidays with travalista</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                            <span><i class=""></i>Price : {{p.price}}</span>
+                            <span class="ml-auto"><a href="{% url 'hotelindex' %}">Discover</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+
+<!--<section class="ftco-section-parallax">-->
+<!--    <div class="parallax-img d-flex align-items-center">-->
+<!--        <div class="container">-->
+<!--            <div class="row d-flex justify-content-center">-->
+<!--                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">-->
+<!--                    <h2>Subcribe to our Newsletter</h2>-->
+<!--                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there-->
+<!--                        live the blind texts. Separated they live in</p>-->
+<!--                    <div class="row d-flex justify-content-center mt-5">-->
+<!--                        <div class="col-md-8">-->
+<!--                            <form action="#" class="subscribe-form">-->
+<!--                                <div class="form-group d-flex">-->
+<!--                                    <input type="text" class="form-control" placeholder="Enter email address">-->
+<!--                                    <input type="submit" value="Subscribe" class="submit px-3">-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Hotel Tarvalista</h2>
+                    <p>Hotel Travalista is a 3 star hotel located in Wayanad,<br>Come to our hotel with family and enjoy</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="https://maps.app.goo.gl/8fvtAW5d7o9gedXh7"><span class="icon-map"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Customer Support</h2>
+                    <ul class="list-unstyled">
+
+                        <li><a href="https://razorpay.com/" class="py-2 d-block">Payment Option</a></li>
+
+                        <li><a href="{% url 'contact_us' %}" class="py-2 d-block">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Hotel Location</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-map-marker"></span><span class="text">Kerala , Wayanad , Near Engineering Collage </span>
+                            </li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span
+                                    class="text">+91 7356718496</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">travalista@gmail.com</span></a>
+                            <li><a href="https://maps.app.goo.gl/8fvtAW5d7o9gedXh7"><span class="icon icon-map"></span><span class="text">Google Map</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/js/aos.js' %}"></script>
+<script src="{% static 'assets/js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'assets/js/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'assets/js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'assets/js/google-map.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/chatbot.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'assets/LOGIN/jquery-3.7.1.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#contactus").click(function () {
+            $("#tourdiv").fadeIn(2000)
+        })
+
+
+    })
+
+
+
+
+
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}' , '' , 'warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}' , '' , 'error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}' , '' , 'success')
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}' , '' , 'info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+
+<!--<script type="text/javascript">-->
+<!--    (function(d, m){-->
+<!--        var kommunicateSettings =-->
+<!--            {"appId":"e31f9eb1331a10ce429d5a1b0726e81","popupWidget":true,"automaticChatOpenOnNavigation":true};-->
+<!--        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;-->
+<!--        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";-->
+<!--        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);-->
+<!--        window.kommunicate = m; m._globals = kommunicateSettings;-->
+<!--    })(document, window.kommunicate || {});-->
+<!--/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */-->
+<!--</script>-->
+
+
+
+</body>
+</html>

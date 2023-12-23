@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1></h1> <br>
+</div>
+
+<div class="col-sm-12 col-xl-12">
+    <div class="bg-light rounded h-100 p-4">
+        <form method="post" action="{% url 'Update_Room' pro_id=product_room.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h6 class="mb-4">Room Edit</h6>
+            <div class="form-floating mb-3">
+
+<!--                <input type="Text" class="form-control" id="floatingInput" placeholder="" name="catname" value="">-->
+                <select name="catname" class="form-control">
+                    <option>{{product_room.catname}}</option>
+                    {% for i in cat %}
+                    <option>{{i.roomcatagory}}</option>
+                    {% endfor %}
+                </select>
+                <label>Catagory of room</label>
+
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingPassword" placeholder=" Number" name="roomname" value="{{product_room.roomname}}">
+                <label for="floatingPassword">Name of room</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control"  placeholder=" Duration" name="price" value="{{product_room.price}}">
+                <label for="floatingPassword">Price</label>
+            </div>
+
+            <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="roomdescription"
+                      style="height: 150px;">{{product_room.roomdescription}}</textarea>
+                <label for="floatingTextarea">Description</label>
+            </div>
+            <br>
+            <div class="form-floating mb-3">
+                <input type="file" class="form-control" placeholder="" name="image">
+                <img src="{{product_room.image.url}}" height="50px" width="50px">
+                <label for="floatingPassword">Image of Room</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+
+
+        </form>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}' , '' , 'warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}' , '' , 'error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}' , '' , 'success')
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}' , '' , 'info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

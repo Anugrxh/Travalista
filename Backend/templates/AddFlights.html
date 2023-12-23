@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1></h1> <br>
+</div>
+
+<div class="col-sm-12 col-xl-12">
+    <div class="bg-light rounded h-100 p-4">
+        <form method="post" action="{% url 'flightdata' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h6 class="mb-4"> Flight Data</h6>
+            <div class="form-floating mb-3">
+                <input type="Text" class="form-control" id="floatingInput" placeholder="Name" name="flightname">
+                <label for="floatingInput">Name of flight</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingPassword" placeholder=" Number" name="flightnumber">
+                <label for="floatingPassword">Flight Number</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="" placeholder=" Number" name="pioletname">
+                <label for="floatingPassword">Name of piolet</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Number" name="copioletname">
+                <label for="floatingPassword">Name of co-piolet</label>
+            </div>
+             <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Number" name="fromplace">
+                <label for="floatingPassword">From</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Number" name="toplace">
+                <label for="floatingPassword">To</label>
+            </div>
+            <label>Seats</label> <br><br>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="totalseat">
+                <label for="floatingPassword">Total seats</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="economyseat">
+                <label for="floatingPassword">Economy seats</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="busnissseat">
+                <label for="floatingPassword">Busniss Class seats</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="firstclassseat">
+                <label for="floatingPassword">First Class seats</label>
+            </div>
+            <label>Ticket Price</label> <br><br>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="economyprice">
+                <label for="floatingPassword">Economy Price</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="busnissprice">
+                <label for="floatingPassword">Busniss Class Price</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder=" Total seats" name="firstclassprice">
+                <label for="floatingPassword">First Class Price</label>
+            </div>
+            <!--        <div class="form-floating mb-3">-->
+            <!--            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">-->
+            <!--                <option selected="">Open this select menu</option>-->
+            <!--                <option value="1">One</option>-->
+            <!--                <option value="2">Two</option>-->
+            <!--                <option value="3">Three</option>-->
+            <!--            </select>-->
+            <!--            <label for="floatingSelect">Works with selects</label>-->
+            <!--        </div>-->
+            <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description"
+                      style="height: 150px;"></textarea>
+                <label for="floatingTextarea">Description</label>
+            </div>
+            <br>
+            <div class="form-floating mb-3">
+                <input type="file" class="form-control" placeholder=" Total seats" name="image">
+                <label for="floatingPassword">Image of flight</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+
+
+        </form>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}' , '' , 'warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}' , '' , 'error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}' , '' , 'success')
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}' , '' , 'info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1></h1>
+</div>
+<br>
+
+<div class="col-8">
+    <div class="row g-4">
+        {% for i in room %}
+        <div class="bg-light rounded h-100 p-4">
+            <h6 class="mb-4">Rooms Display</h6>
+            <form>
+                <h4>
+                    catagory Name
+                </h4>
+                <p>{{i.catname}}</p>
+
+                <h4>
+                    Room Name
+                </h4>
+                <p> {{i.roomname}}</p>
+
+                <h4>
+                    Description
+                </h4>
+                <p>{{i.roomdescription}}</p>
+
+                <h4>
+                    Price
+                </h4>
+                <p>{{i.price}}</p>
+
+                <h4>
+                    Image
+                </h4>
+                <img src="{{i.image.url}}" height="50px" width="50px">
+                <br> <br>
+                 <a href="{% url 'room_edit' pro_id=i.id %}" class="btn btn-primary">edit
+<!--                    <button type="submit" class="btn btn-primary">Edit</button>-->
+                </a> <br>
+                <br>
+                 <a href="{% url 'room_delete' del_id=i.id %}" class="btn btn-dark">Delete</a>
+
+
+
+
+
+            </form>
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+</div>
+
+</body>
+</html>
+{% endblock %}

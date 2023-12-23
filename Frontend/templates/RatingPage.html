@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <title>Travalista</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'assets/LOGIN/rating.css' %}">
+</head>
+
+<style>
+
+</style>
+
+<body class="body">
+  <h1 style="color: white; margin-left: -80%; margin-top: -25%;">Travalista</h1>
+  <div class="main_div">
+    <h1>How Was Your Experience ?</h1><br>
+    <h3 class="reviewheading">Please rate Travelista</h3>
+    <form action="{% url 'Ratingdata' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group required" style="padding-left: 42%;">
+        <div class="rating">
+
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label class="star" for="star1" title="Bad" aria-hidden="true"></label> 
+
+        </div>
+      </div>
+      <div>
+        <input type="text" placeholder="Enter email" class="input1" name="email">
+        <input type="hidden" placeholder="Enter email" class="input1" name="username" value="{{request.session.username}}">
+        <textarea name="description" id="" cols="30" rows="10" class="textarea" placeholder="description"></textarea>
+        <button class="button" type="submit">send</button>
+<!--        <a href="{% url 'home' %}"><button class="button" type="submit">not now</button></a>-->
+      </div>
+    </form>
+    <form action="{% url 'home' %}">
+      <button class="button">Not Now</button>
+    </form>
+  </div>
+
+
+
+</body>
+
+</html>

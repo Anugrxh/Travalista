@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore Activity</title>
+</head>
+<body>
+<div>
+    <h1></h1> <br>
+</div>
+
+<div class="col-sm-12 col-xl-12">
+    <div class="bg-light rounded h-100 p-4">
+        <form method="post" action="{% url 'Update_RoomCat' Cat_id=cat.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h6 class="mb-4">Hotel Room Catagory Edit</h6>
+            <div class="form-floating mb-3">
+                <input type="Text" class="form-control" id="floatingInput" placeholder="Name of Room Ctagory"
+                       name="roomcatagory" value="{{cat.roomcatagory}}">
+                <label for="floatingInput">Name of Room Catagory</label>
+            </div>
+
+            <div class="form-floating">
+            <textarea class="form-control" placeholder="Description" id="floatingTextarea" name="roomcatdescription"
+                      style="height: 150px;">{{cat.roomcatdescription}}</textarea>
+                <label for="floatingTextarea">Description</label>
+            </div>
+            <br>
+            <div class="form-floating mb-3">
+                <input type="file" class="form-control" placeholder="" name="image">
+                <img src="{{cat.image.url}}" height="50px" width="50px">
+                <label>Image of Activity</label>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+
+
+        </form>
+
+    </div>
+
+
+
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+{% for i in messages %}
+{% if i.tags == 'warning' %}
+<script>
+                swal('{{i}}' , '' , 'warning')
+
+</script>
+{% elif i.tags == 'error' %}
+<script>
+                swal('{{i}}' , '' , 'error')
+
+</script>
+{% elif i.tags == 'success' %}
+<script>
+                swal('{{i}}' , '' , 'success')
+
+</script>
+{% else %}
+<script>
+                swal('{{i}}' , '' , 'info')
+
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

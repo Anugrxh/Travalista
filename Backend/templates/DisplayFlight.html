@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1></h1>
+</div> <br>
+
+<div class="col-12">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Flights</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+
+                                            <th scope="col">Flight Name</th>
+                                            <th scope="col">Flight Number</th>
+                                            <th scope="col">Piolet Name</th>
+                                            <th scope="col">Co-Piolet Name</th>
+                                            <th scope="col">Total Seats</th>
+                                            <th scope="col">Economy Seats</th>
+                                            <th scope="col">Busniss Seats</th>
+                                            <th scope="col">First Class Seats</th>
+                                            <th scope="col">Economy Price</th>
+                                            <th scope="col">Busniss Price</th>
+                                            <th scope="col">First class Price</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Image</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in flightdata %}
+                                        <tr>
+
+                                            <td>{{i.flightname}}</td>
+                                            <td>{{i.flightnumber}}</td>
+                                            <td>{{i.pioletname}}</td>
+                                            <td>{{i.copioletname}}</td>
+                                            <td>{{i.totalseat}}</td>
+                                            <td>{{i.economyseat}}</td>
+                                            <td>{{i.busnissseat}}</td>
+                                            <td>{{i.firstclassseat}}</td>
+                                            <td>{{i.economyprice}}</td>
+                                            <td>{{i.busnissprice}}</td>
+                                            <td>{{i.firstclassprice}}</td>
+                                            <td>{{i.description}}</td>
+                                            <td>
+                                                <img src="{{i.image.url}}" height="50px" width="50px">
+                                            </td>
+                                             <td>
+                                                <form action="{% url 'Edit_Flight' dataid=i.id %}">
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
+
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="{% url 'Delete_Flight' data_id=i.id %}">
+                                                    <button type="submit" class="btn btn-dark">delete</button>
+
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}
