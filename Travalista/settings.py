@@ -29,6 +29,15 @@ RAZOR_KEY_SECRET = 'Gwt5sgqFhjy0ur0qJUKQxTwY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'anugrahmv007@gmail.com'
+EMAIL_HOST_PASSSWORD = 'jmel igjb bgeq czlk'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
 ALLOWED_HOSTS = []
 
 

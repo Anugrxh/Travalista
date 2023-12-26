@@ -3,8 +3,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from Backend.models import flightdb, tourpackagedb, hotelexploredb, hotelroomcatagorydb, roomdb
+
 from Frontend.models import Ratingdb, userdb, contactdb, checkoutflightdb, TourReplydb, roombookeddb
 from django.contrib import messages
+from django.core.mail import send_mail
+
+from django.core.mail import EmailMessage
 
 # Create your views here.
 # LOGIN AND SIGNN UP
@@ -21,6 +25,12 @@ def usrdata(request):
         obj=userdb(username=una,email=ema,mobile=mob,password=pas)
         obj.save()
         messages.success(request,"Account Created...!")
+
+        subject = "Welcome to Travalista"
+        message = "Hello" +obj.username + "!!\nWelcome to Travalista \n Thank you for considering us"
+        from_email = settings.EMAIL_HOST_USER
+        to_list = [obj.email]
+        send_mail(subject,message,from_email,to_list,fail_silently=True)
         return redirect(login_frontend)
 
 def Userlogin(request):
@@ -233,6 +243,11 @@ def room_single(request,room_id):
     data = roomdb.objects.get(id=room_id)
     return render(request,"HotelRoomSingle.html",{'data':data})
 
+
+from Frontend.models import roombookeddb
+from django.conf import settings
+from Travalista import settings
+
 def roombookeddata(request):
     if request.method == "POST":
         hcn = request.POST.get('hotelcustomername')
@@ -245,6 +260,7 @@ def roombookeddata(request):
         hpri = request.POST.get('hotelprice')
         obj = roombookeddb(hotelcustomername=hcn,username=una,roomname=rmna,hotelcustomeremail=hcem,hotelcustomermobile=hcmo,hotelbookingstartdate=hbsd,hotelbookingenddate=hbed,hotelprice=hpri)
         obj.save()
+
         return redirect(payment_hotel)
 
 def payment_hotel(request):

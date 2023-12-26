@@ -135,6 +135,7 @@ def tourpackagedata(request):
         img = request.FILES['image']
         obj = tourpackagedb(tourname=tna,tourprice=tpri,tourduration=tdur,tourdescription=tdes,image=img)
         obj.save()
+        messages.success(request, " Details added...!")
         return redirect(TourPackageAdd)
 
 
@@ -146,6 +147,7 @@ def TourPackageDisplay(request):
 def TourPackageDelete(request,data_id):
     data = tourpackagedb.objects.get(id=data_id)
     data.delete()
+    messages.success(request, "Deleted...!")
     return redirect(TourPackageDisplay)
 
 
@@ -178,6 +180,7 @@ def TourPackageReply(request):
 def TourPackageReplyDelete(request,data_id):
     data = TourReplydb.objects.get(id=data_id)
     data.delete()
+    messages.success(request, "Deleted...!")
     return redirect(TourPackageReply)
 
 
@@ -190,6 +193,7 @@ def contactusdisplay(request):
 def contactusdelete(request,data_id):
     data = contactdb.objects.get(id=data_id)
     data.delete()
+    messages.success(request, "Deleted...!")
     return redirect(contactusdisplay)
 
 
